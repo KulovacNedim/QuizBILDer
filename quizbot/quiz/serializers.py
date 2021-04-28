@@ -1,26 +1,28 @@
 from rest_framework import serializers
 from .models import Question, Answer
 
+
 class AnswerSerializer(serializers.ModelSerializer):
 
-  class Meta:
+    class Meta:
 
-    model = Answer
-    fields = [
-      'id',
-      'answer',
-      'is_correct',
-    ]
+        model = Answer
+        fields = [
+            'id',
+            'answer',
+            'is_correct',
+        ]
 
 
 class RandomQuestionSerializer(serializers.ModelSerializer):
 
-  answer = AnswerSerializer(many=True, read_only=True)
+    answer = AnswerSerializer(many=True, read_only=True)
 
-  class Meta:
+    class Meta:
 
-    model = Question
-    fields = [
-      'title',
-      'answer'
-    ]
+        model = Question
+        fields = [
+            'title',
+            'points',
+            'answer'
+        ]

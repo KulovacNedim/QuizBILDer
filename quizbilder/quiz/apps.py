@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ScoreConfig(AppConfig):
+class QuizConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'quizbot.score'
+    name = 'quizbilder.quiz'

@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quizbot.quiz',
+    'quizbilder.quiz',
     'rest_framework',
-    'quizbot.score',
+    'quizbilder.score',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'quizbot.urls'
+ROOT_URLCONF = 'quizbilder.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'quizbot.wsgi.application'
+WSGI_APPLICATION = 'quizbilder.wsgi.application'
 
 
 # Database

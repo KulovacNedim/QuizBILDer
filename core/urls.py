@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from quiz.views import RandomQuestion
+from question.views import RandomQuestion
 from score.views import UpdateScores
 from score.views import Leaderboard
 

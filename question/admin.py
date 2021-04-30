@@ -7,6 +7,7 @@ class AnswerInlineModel(admin.TabularInline):
   fields = [
     'answer',
     'is_correct',
+    'is_active',
   ]
 
 @admin.register(models.Question)
@@ -15,7 +16,10 @@ class QuestionAdmin(admin.ModelAdmin):
   fields = [
     'title',
     'points',
-    'difficulty'
+    'difficulty',
+    'is_active',
+    'question_type',
+    'is_for_exam'
   ]
   list_display = [
     'title',
@@ -25,7 +29,7 @@ class QuestionAdmin(admin.ModelAdmin):
     AnswerInlineModel,
   ]
 
-@admin.register(models.Answer)
+# @admin.register(models.Answer)
 
 class AnswerAdmin(admin.ModelAdmin):
   list_display = [

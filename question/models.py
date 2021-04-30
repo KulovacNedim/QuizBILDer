@@ -1,4 +1,7 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 from django.utils.translation import ugettext as _
 
 
@@ -11,11 +14,18 @@ class Question(models.Model):
         (3, _('Advanced')),
         (4, _('Expert'))
     )
+    
+    TYPE = (
+        (0, _('Multiple Choice')),
+        (1, _('True/False'))
+    )
 
     title = models.CharField(_("title"), max_length=250)
     points = models.SmallIntegerField(_("points"))
     difficulty = models.IntegerField(_("Difficulty"), choices=LEVEL, default=0)
     is_active = models.BooleanField(_("Is Active"), default=True)
+    question_type = models.IntegerField(_("Question Type"), choices=TYPE,default=0)
+    is_for_exam = models.BooleanField(_("Is For Exam"), default=False)
     created_at = models.DateTimeField(
         _("Created"), auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField(

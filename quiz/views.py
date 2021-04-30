@@ -6,6 +6,8 @@ from .serializers import RandomQuestionSerializer
 
 class RandomQuestion(APIView):
 
+  # app_name="quiz"
+
   def get(self, rewuest, format=None, **kwargs):
     question = Question.objects.filter().order_by('?')[:1]
     serializer = RandomQuestionSerializer(question, many=True)

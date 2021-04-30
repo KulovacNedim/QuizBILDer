@@ -25,7 +25,7 @@ class QuestionAdmin(admin.ModelAdmin):
     AnswerInlineModel,
   ]
 
-@admin.register(models.Answer)
+# @admin.register(models.Answer)
 
 class AnswerAdmin(admin.ModelAdmin):
   list_display = [

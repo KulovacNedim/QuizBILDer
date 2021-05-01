@@ -1,8 +1,6 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.utils.translation import ugettext as _
+from quiz.models import Quiz
 
 
 class Question(models.Model):
@@ -30,6 +28,7 @@ class Question(models.Model):
         _("Created"), auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField(
         _("Updated"), auto_now=True, auto_now_add=False)
+    quiz = models.ForeignKey(Quiz, related_name="quiz", null=True, verbose_name=_("Quiz"), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

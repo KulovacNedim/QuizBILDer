@@ -14,6 +14,7 @@ class AnswerInlineModel(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
   fields = [
+    'quiz',
     'title',
     'points',
     'difficulty',

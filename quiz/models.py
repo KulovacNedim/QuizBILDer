@@ -1,4 +1,5 @@
 from django.db import models
+# from question.models import Question
 from django.utils.translation import ugettext as _
 
 
@@ -41,6 +42,7 @@ class Quiz(models.Model):
         _("Created"), auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField(
         _("Updated"), auto_now=True, auto_now_add=False)
+    # questions = models.ForeignKey(Question, related_name="question", null=True, verbose_name=_("Questions"), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

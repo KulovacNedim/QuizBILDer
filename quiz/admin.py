@@ -55,12 +55,14 @@ class QuestionInlineModel(NestedTabularInline):
 class QuizAdmin(NestedModelAdmin):
   fields = [
     'name',
+    'subcategory',
     'created_by',
     'is_active',
     'expires_at',
   ]
   list_display = [
     'name',
+    'subcategory',
     'is_active',
   ]
   inlines = [

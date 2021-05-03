@@ -14,14 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from question.views import RandomQuestion
 from score.views import UpdateScores
 from score.views import Leaderboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/random/', RandomQuestion.as_view(), name='random'),
-    path('api/score/update/', UpdateScores.as_view(), name='score_update'),
-    path('api/score/leaderboard/', Leaderboard.as_view(), name='leaderboard'),
+    path('api/', include('quiz.urls', namespace='quiz')),
+    path('api2/random/', RandomQuestion.as_view(), name='random'),
+    path('api2/score/update/', UpdateScores.as_view(), name='score_update'),
+    path('api2/score/leaderboard/', Leaderboard.as_view(), name='leaderboard'),
 ]

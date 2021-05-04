@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from quiz.models import Quiz
+from quiz.models import Quiz, SubCategory
 from question.models import Question
 from question.models import Answer
 
@@ -16,6 +16,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         ]
 
 class QuestionSerializer(serializers.ModelSerializer):
+  
     answers = AnswerSerializer(many=True, read_only=True)
 
     class Meta:
@@ -35,14 +36,25 @@ class QuestionSerializer(serializers.ModelSerializer):
         ]
 
 
+class SubCategorySerializer(serializers.ModelSerializer):
 
+    class Meta:
+
+        model = SubCategory
+        fields = [
+            'id',
+            'category',
+            'name',
+            'is_active',
+            'created_at',
+            'updated_at',
+        ]
 
 
 class QuizSerializer(serializers.ModelSerializer):
 
-    # answer = AnswerSerializer(many=True, read_only=True)
-    # question = "NEDIM"
     questions = QuestionSerializer(many=True, read_only=True)
+    subcategory = SubCategorySerializer(read_only=True)
 
     class Meta:
 
@@ -57,6 +69,4 @@ class QuizSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
             'questions',
-            # 'points',
-            # 'answer'
         ]

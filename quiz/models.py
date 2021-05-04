@@ -33,7 +33,8 @@ class SubCategory(models.Model):
 
 class Quiz(models.Model):
 
-    subcategory = models.OneToOneField(SubCategory, null=True, on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, related_name="quiz", verbose_name=_("SubCategory"), null=True, on_delete=models.PROTECT)
+
     name = models.CharField(_("name"), max_length=250)
     created_by = models.CharField(_("Created By"), max_length=250, null=True)
     is_active = models.BooleanField(_("Is Active"), default=True)

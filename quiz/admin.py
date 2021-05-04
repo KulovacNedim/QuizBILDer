@@ -68,24 +68,4 @@ class QuizAdmin(NestedModelAdmin):
   inlines = [
     QuestionInlineModel,
   ]
-
-
-
-
-
-
-
-
-
-
-# @admin.register(models.SubCategory)
-
-# class SubCategoryAdmin(admin.ModelAdmin):
-#   list_display = [
-#     'name',
-#     'is_active',
-#   ]
-
-
-
-
+  

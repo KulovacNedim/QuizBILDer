@@ -27,32 +27,12 @@ class CategoryAdmin(admin.ModelAdmin):
     SubcategoryInlineModel,
   ]
 
-
-class AnswerInlineModel(NestedTabularInline):
-  model = Answer
-  fields = [
-    'answer',
-    'is_correct',
-    'is_active',
-  ]
-
-class QuestionInlineModel(NestedTabularInline):
-  model = Question
-  fields = [
-    'title',
-    'points',
-    'difficulty',
-    'is_active',
-    'question_type',
-    'is_for_exam',
-  ]
-  inlines = [
-    AnswerInlineModel,
-  ]
+class QuestionInline(admin.TabularInline):
+    model = Question.quiz.through
 
 @admin.register(models.Quiz)
 
-class QuizAdmin(NestedModelAdmin):
+class QuizAdmin(admin.ModelAdmin):
   fields = [
     'name',
     'subcategory',
@@ -66,6 +46,6 @@ class QuizAdmin(NestedModelAdmin):
     'is_active',
   ]
   inlines = [
-    QuestionInlineModel,
+    QuestionInline,
   ]
   

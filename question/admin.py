@@ -20,6 +20,7 @@ class QuestionAdmin(admin.ModelAdmin):
     'difficulty',
     'is_active',
     'question_type',
+    'subcategories',
     'is_for_exam'
   ]
   list_display = [
@@ -28,14 +29,5 @@ class QuestionAdmin(admin.ModelAdmin):
   ]
   inlines = [
     AnswerInlineModel,
-  ]
-
-# @admin.register(models.Answer)
-
-class AnswerAdmin(admin.ModelAdmin):
-  list_display = [
-    'answer',
-    'is_correct',
-    'question'
   ]
 

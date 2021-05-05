@@ -30,8 +30,6 @@ class QuestionSerializer(serializers.ModelSerializer):
             'is_active',
             'question_type',
             'is_for_exam',
-            'created_at',
-            'updated_at',
             'answers'
         ]
 
@@ -43,17 +41,13 @@ class SubCategorySerializer(serializers.ModelSerializer):
         model = SubCategory
         fields = [
             'id',
-            'category',
             'name',
-            'is_active',
-            'created_at',
-            'updated_at',
         ]
 
 
 class QuizSerializer(serializers.ModelSerializer):
 
-    questions = QuestionSerializer(many=True, read_only=True)
+    questions = serializers.SerializerMethodField()
     subcategory = SubCategorySerializer(read_only=True)
 
     class Meta:
@@ -66,7 +60,9 @@ class QuizSerializer(serializers.ModelSerializer):
             'created_by',
             'is_active',
             'expires_at',
-            'created_at',
-            'updated_at',
             'questions',
         ]
+
+    def get_questions(self, obj):
+        qset = Question.objects.filter(quiz=obj)
+        return [QuestionSerializer(m).data for m in qset]

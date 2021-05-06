@@ -22,6 +22,8 @@ from score.views import Leaderboard
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/quiz/', include('quiz.urls', namespace='quiz')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
     path('api2/random/', RandomQuestion.as_view(), name='random'),
     path('api2/score/update/', UpdateScores.as_view(), name='score_update'),
     path('api2/score/leaderboard/', Leaderboard.as_view(), name='leaderboard'),

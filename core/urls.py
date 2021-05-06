@@ -15,14 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 from question.views import RandomQuestion
 from score.views import UpdateScores
 from score.views import Leaderboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/user/', include('users.urls', namespace='users')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')), # login to admin area
     path('api/quiz/', include('quiz.urls', namespace='quiz')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     path('api2/random/', RandomQuestion.as_view(), name='random'),
     path('api2/score/update/', UpdateScores.as_view(), name='score_update'),

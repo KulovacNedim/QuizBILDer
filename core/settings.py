@@ -141,16 +141,18 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'NON_FIELD_ERRORS_KEY': 'errors'
 }
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://localhost:8080",
+    "http://localhost:8081",
 ]
 
 # Custom User model
-AUTH_USER_MODEL = "users.NewUser"
+AUTH_USER_MODEL = "users.User"
 
 
 SIMPLE_JWT = {

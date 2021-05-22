@@ -42,6 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True, db_index=True)
     user_name = models.CharField(max_length=150)
     first_name = models.CharField(max_length=150, blank=True)
+    last_name = models.CharField(max_length=150, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     about = models.TextField(_(
         'about'), max_length=500, blank=True)

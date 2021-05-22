@@ -1,4 +1,3 @@
-from django.core.exceptions import ValidationError
 from rest_framework import serializers
 from users.models import User
 from django.shortcuts import get_object_or_404
@@ -30,4 +29,15 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
-        
+
+class UserInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'email',
+            'user_name',
+            'first_name',
+            'last_name',
+        ]

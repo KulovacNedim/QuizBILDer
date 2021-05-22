@@ -30,8 +30,8 @@ urlpatterns = [
     path('api/user/', include('users.urls', namespace='users')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')), # login to admin area
     path('api/quiz/', include('quiz.urls', namespace='quiz')),
-
-    path('api2/random/', RandomQuestion.as_view(), name='random'),
-    path('api2/score/update/', UpdateScores.as_view(), name='score_update'),
-    path('api2/score/leaderboard/', Leaderboard.as_view(), name='leaderboard'),
+    
+    path('api/v0/random/', RandomQuestion.as_view(), name='random'),
+    path('api2/v0/score/update/', UpdateScores.as_view(), name='score_update'),
+    path('api2/v0/score/leaderboard/', Leaderboard.as_view(), name='leaderboard'),
 ]

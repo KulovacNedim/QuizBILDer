@@ -1,9 +1,9 @@
+from users.models import User
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework import serializers, status
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import RegisterSerializer
-from rest_framework_simplejwt.tokens import RefreshToken
+from .serializers import RegisterSerializer, UserInfoSerializer
 from rest_framework.permissions import AllowAny
 
 class RegisterView(APIView):
@@ -16,3 +16,9 @@ class RegisterView(APIView):
         user_data = serializer.data
 
         return Response(user_data, status=status.HTTP_201_CREATED)
+
+class UserInfo(APIView):
+    def get(self, request, format=None, **kwargs):
+        user = User.objects.get(email=request.user)
+        serializer = UserInfoSerializer(user)
+        return Response(serializer.data)
